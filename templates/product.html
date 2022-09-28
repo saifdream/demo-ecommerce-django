@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!--Main layout-->
+<main class="mt-5 pt-4">
+    <div class="container dark-grey-text mt-5">
+
+        <!--Grid row-->
+        <div class="row wow fadeIn">
+
+            <!--Grid column-->
+            <div class="col-md-6 mb-4">
+
+                <img src="{{ object.image.url }}" class="img-fluid" alt="">
+
+            </div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-md-6 mb-4">
+
+                <!--Content-->
+                <div class="p-4">
+
+                    <div class="mb-3">
+                        <a href="">
+                            <span class="badge purple mr-1"
+                                  style="padding: 10px">{{ object.get_category_display }}</span>
+                        </a>
+                        {% if item.label == 'P' %} <a href=""><span class="badge red mr-1" style="padding: 10px">Bestseller</span></a>
+                        {% elif item.label == 'D' %} <a href=""><span class="badge blue mr-1"
+                                                                      style="padding: 10px">New</span></a>
+                        {% endif %}
+                    </div>
+
+                    <p class="lead">
+                        {% if object.discount_price %}
+                        <span class="mr-1">
+                <del>${{ object.price }}</del>
+              </span>
+                        <span>${{ object.discount_price }}</span>
+                        {% else %}
+                        <span>${{ object.price }}</span>
+                        {% endif %}
+                    </p>
+
+                    <p class="lead font-weight-bold">Description</p>
+
+                    <p>{{ object.description }}</p>
+
+                    <!--<form class="d-flex justify-content-left">
+                      &lt;!&ndash; Default input &ndash;&gt;
+                      <input type="number" value="1" aria-label="Search" class="form-control" style="width: 100px">
+                      <button class="btn btn-primary btn-md my-0 p" type="submit">Add to cart
+                        <i class="fas fa-shopping-cart ml-1"></i>
+                      </button>
+
+                    </form>-->
+
+                    <a class="btn btn-primary btn-md my-0 p" href="{{object.get_add_to_cart_url}}">
+                        Add to cart
+                        <i class="fas fa-shopping-cart ml-1"></i>
+                    </a>
+
+                    <a class="btn btn-danger btn-md my-0 p" href="{{object.get_remove_from_cart_url}}">
+                        Remove From Cart
+                        <i class="fas fa-shopping-cart ml-1"></i>
+                    </a>
+
+                </div>
+                <!--Content-->
+
+            </div>
+            <!--Grid column-->
+
+        </div>
+        <!--Grid row-->
+    </div>
+</main>
+<!--Main layout-->
+{% endblock content %}

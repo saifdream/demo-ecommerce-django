@@ -1,0 +1,21 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Sign Up Closed" %}{% endblock %}
+
+{% block content %}
+<main>
+    <div class="container">
+        <section class="mb-4" style="padding-top: 6rem !important;">
+            <div class="row wow fadeIn">
+                <div class='col-6 offset-3'>
+                    <h1>{% trans "Sign Up Closed" %}</h1>
+
+                    <p>{% trans "We are sorry, but the sign up is currently closed." %}</p>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+{% endblock %}
